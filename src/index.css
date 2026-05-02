@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Inter', sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-slate-50 text-slate-900 min-h-screen overflow-x-hidden antialiased;
+  }
+}
+
+@layer utilities {
+  .card {
+    @apply bg-white border border-slate-200 shadow-sm rounded-xl;
+  }
+  
+  .card-hover {
+    @apply hover:shadow-md hover:border-slate-300 transition-all duration-200;
+  }
+
+  .card-dark {
+    @apply bg-slate-900 text-white rounded-xl shadow-xl;
+  }
+
+  .sidebar-link {
+    @apply flex items-center gap-3 px-3 py-2 text-slate-600 hover:bg-slate-50 rounded-lg text-sm transition-colors;
+  }
+
+  .sidebar-link-active {
+    @apply flex items-center gap-3 px-3 py-2 bg-blue-50 text-blue-700 rounded-lg font-medium text-sm;
+  }
+
+  .status-pill {
+    @apply text-[10px] px-2 py-0.5 rounded-full font-bold uppercase;
+  }
+
+  .status-green { @apply bg-emerald-500 text-white; }
+  .status-yellow { @apply bg-amber-500 text-white; }
+  .status-red { @apply bg-rose-500 text-white; }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');

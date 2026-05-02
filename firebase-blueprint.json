@@ -1,0 +1,75 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "System user with specific roles (Principal, Teacher, Guard, etc.)",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "fullName": { "type": "string" },
+        "role": { "type": "string", "enum": ["principal", "teacher", "guard", "student", "warden", "clerk"] },
+        "email": { "type": "string", "format": "email" }
+      },
+      "required": ["userId", "fullName", "role"]
+    },
+    "Zone": {
+      "title": "Zone",
+      "description": "A school zone with thermal sensors",
+      "type": "object",
+      "properties": {
+        "zoneId": { "type": "string" },
+        "name": { "type": "string" },
+        "type": { "type": "string", "enum": ["indoor", "outdoor"] },
+        "temperature": { "type": "number" },
+        "humidity": { "type": "number" },
+        "lastUpdated": { "type": "string", "format": "date-time" }
+      },
+      "required": ["zoneId", "name", "temperature", "humidity"]
+    },
+    "HealthScan": {
+      "title": "Health Scan",
+      "description": "AI biometric screening result",
+      "type": "object",
+      "properties": {
+        "scanId": { "type": "string" },
+        "studentId": { "type": "string" },
+        "status": { "type": "string", "enum": ["green", "yellow", "red"] },
+        "features": { "type": "object" },
+        "timestamp": { "type": "string", "format": "date-time" }
+      },
+      "required": ["scanId", "studentId", "status", "timestamp"]
+    },
+    "ClinicVisit": {
+      "title": "Clinic Visit",
+      "description": "Record of student referrals to the clinic",
+      "type": "object",
+      "properties": {
+        "studentId": { "type": "string" },
+        "studentName": { "type": "string" },
+        "referrerId": { "type": "string" },
+        "reason": { "type": "string" },
+        "status": { "type": "string", "enum": ["pending", "in-progress", "discharged"] },
+        "timestamp": { "type": "string", "format": "date-time" }
+      },
+      "required": ["studentId", "studentName", "reason", "status", "timestamp"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profile and role"
+    },
+    "/zones/{zoneId}": {
+      "schema": "Zone",
+      "description": "Real-time thermal data per zone"
+    },
+    "/health_scans/{scanId}": {
+      "schema": "HealthScan",
+      "description": "Biometric health logs"
+    },
+    "/clinic_visits/{visitId}": {
+      "schema": "ClinicVisit",
+      "description": "Centralized clinic referral records"
+    }
+  }
+}

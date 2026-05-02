@@ -1,0 +1,13 @@
+{
+  "name": "ATLAS (Adaptive Triage & Learner Assurance System) By Katwoo",
+  "description": "An AI-powered school health and thermal safety ecosystem (Adaptive Triage & Learner Assurance System) that monitors environmental heat and student biometrics.",
+  "requestFramePermissions": [
+    "camera"
+  ],
+  "majorCapabilities": [
+    "AI-powered biometric screening",
+    "Real-time heat zone mapping",
+    "Thermal-pedagogy logic",
+    "Role-based dashboards"
+  ]
+}
